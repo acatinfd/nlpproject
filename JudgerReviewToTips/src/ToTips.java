@@ -80,8 +80,8 @@ public class ToTips {
             String text = (String) jsonObject.get("text");
 
             /*regular expression: end of sentence*/    
-            String regEx="\\.|\\!|\\?";  // to be fixed?? Dr. & other char    
-            Pattern p =Pattern.compile(regEx);     
+            String regEx="\\.\\D|\\D\\.|\\!|\\?";  // to be fixed?? Dr. & other char    
+            Pattern p = Pattern.compile(regEx);     
             Matcher m = p.matcher(text);     
                 
             /*split according to end char*/    
