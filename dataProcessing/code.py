@@ -22,7 +22,7 @@ with open("yelp_academic_dataset_tip.json") as f:
             count = count + 1
             tip = t['text']
             all_business[t['business_id']]['tips'].append(tip)
-count   
+count    
 
 #get reviews for business
 with open("yelp_academic_dataset_review.json") as f:
@@ -32,7 +32,7 @@ with open("yelp_academic_dataset_review.json") as f:
         review = eval(data)
         if review['business_id'] in all_business:
             reviewCount = reviewCount + 1
-            all_business[t['business_id']]['reviews'].append(review)
+            all_business[review['business_id']]['reviews'].append(review)
 reviewCount
 
 #save data
@@ -43,5 +43,10 @@ How to load data:
 ----------------
 import pickle
 all_business = pickle.load( open( "saveBusiness.p", "rb" ) )
-----------------
+
+-------How to get reviews---------
+for key in business['reviews']:
+        review = key['text']
+----------------------------------
+
 """
