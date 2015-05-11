@@ -44,10 +44,22 @@ How to load data:
 import pickle
 all_business = pickle.load( open( "saveBusiness.p", "rb" ) )
 
--------How to get reviews---------
+-------How to get reviews from all_business---------
 for business in all_business.values():
     for key in business['reviews']:
         review = key['text']
 ----------------------------------
+
+********************Test Set*************************
+----------load test set----------------
+import pickle
+test_set = pickle.load( open( "saveReviewTestSet.p", "rb" ) )
+
+----------get review from test set--------------
+for business in training_set:
+    for review in business['reviews']:
+        review_id = review['review_id']
+        business_id = review['business_id']
+        review_sentences = review['text']
 
 """
