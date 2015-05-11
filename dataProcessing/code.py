@@ -45,7 +45,8 @@ import pickle
 all_business = pickle.load( open( "saveBusiness.p", "rb" ) )
 
 -------How to get reviews---------
-for key in business['reviews']:
+for business in all_business.values():
+    for key in business['reviews']:
         review = key['text']
 ----------------------------------
 
