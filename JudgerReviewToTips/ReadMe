@@ -1,2 +1,4 @@
 # To run
-java -jar test.json outputFolders
+java -jar ToTips.jar test.json outputFolders
+
+# runnable, problem with punctuation to be fixed.
