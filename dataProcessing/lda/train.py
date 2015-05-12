@@ -33,7 +33,7 @@ class Dictionary(object):
     def build(self):
         self.cursor.rewind()
         dictionary = corpora.Dictionary(review["words"] for review in self.cursor)
-        dictionary.filter_extremes(keep_n=1000)
+        dictionary.filter_extremes(keep_n=10000)
         dictionary.compactify()
         corpora.Dictionary.save(dictionary, self.dictionary_path)
 
@@ -58,7 +58,7 @@ def main():
 
     dictionary_path = "dictionary.dict"
     corpus_path = "corpus.lda-c"
-    lda_num_topics = 5
+    lda_num_topics = 50
     lda_model_path = "lda_model_50_topics.lda"
 
     corpus_collection = MongoClient(Settings.MONGO_CONNECTION_STRING)[Settings.TAGS_DATABASE][
