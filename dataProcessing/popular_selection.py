@@ -13,6 +13,7 @@ input:
 output:
     return a list of tuples containing (review_id, sentence_id, sentence), the size of the list is "tipNum" (or smaller than that if limited by the size of test_set)
 """
+import nltk
 
 def reviewScore(review):
     return review['votes']['funny'] + review['votes']['useful'] + review['votes']['cool']

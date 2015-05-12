@@ -1,0 +1,4 @@
+First time, run setup.py:
+	python setup.py
+For the rest of process, only run judger_selection.py:
+	python judger_selection.py 
