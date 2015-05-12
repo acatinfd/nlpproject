@@ -63,6 +63,11 @@ for business in training_set:
         review_sentences = review['text']
 
 ***************** get Rated Reviews (1 star or 5 stars) *******************
+----------load data----------------
+import pickle
+ratedReviews = pickle.load( open( "saveRatedReviews.p", "rb" ) )
+
+----------count 1 star reviews --------------
 count = 0
 for key in ratedReviews:
     if ratedReviews[key] == 1:
