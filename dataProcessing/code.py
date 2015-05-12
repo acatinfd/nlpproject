@@ -62,4 +62,12 @@ for business in training_set:
         business_id = review['business_id']
         review_sentences = review['text']
 
+***************** get Rated Reviews (1 star or 5 stars) *******************
+count = 0
+for key in ratedReviews:
+    if ratedReviews[key] == 1:
+        count += 1
+
+print ("1 stars: ", count)
+
 """
