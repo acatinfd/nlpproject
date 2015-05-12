@@ -56,7 +56,7 @@ import pickle
 test_set = pickle.load( open( "saveReviewTestSet.p", "rb" ) )
 
 ----------get review from test set--------------
-for business in training_set:
+for business in test_set:
     for review in business['reviews']:
         review_id = review['review_id']
         business_id = review['business_id']
