@@ -51,6 +51,6 @@ for business in training_set:
             done += 1
             if done % 100 == 0:
                 end = time.time()
-                os.system('cls')
+                os.system('clear')
                 print 'Done ' + str(done) + ' out of ' + str(count) + ' in ' + str((end - start))
     
