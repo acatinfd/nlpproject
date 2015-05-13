@@ -1,4 +1,5 @@
 import pickle
+import math
 
 def currentProcess(last, total):
     if last >= total:
@@ -6,7 +7,7 @@ def currentProcess(last, total):
         anw = input('Press any key to leave: ')
         return
     
-    percentage = last/total*100
+    percentage = math.ceil(float(last)/total*100)
     print (str(last) + ' sentences! You have finished ' + str(percentage) + '% of all the sentences!')
     
 def judge(lastPoint, stopPoint, sortedSentenceList, judger_tips):  
