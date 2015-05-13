@@ -31,7 +31,9 @@ def judge(lastPoint, stopPoint, sortedSentenceList, judger_tips):
     
 def judger_selection():
     #pre-setup
-    sortedSentenceList = pickle.load ( open ( "judgerTestSet.p", "rb") )
+    sortedSentenceList1 = pickle.load ( open ( "judgerTestSet.p", "rb") )
+    sortedSentenceList = sortedSentenceList1[:2000]
+    
     total = len(sortedSentenceList)
     if total == 0:
         print ('Error: empty file')
