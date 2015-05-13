@@ -9,4 +9,5 @@ class Settings:
     REVIEWS_COLLECTION = "Reviews"
     CORPUS_COLLECTION = "Corpus"
 
-    DATASET_TEST_FILE = 'reviews_data.json' #TODO
+    TEST_DATABASE = "TESTING_REVIEWS" #TODO
+    TEST_RESULT_COLLECTION = "TEST_RESULTS"

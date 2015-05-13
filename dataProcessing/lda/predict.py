@@ -125,8 +125,14 @@ class Predict():
 
 def extract_distribution(topic_dist):
     dist = []
-    for i in range(len(topic_dist)):
-        dist.append(topic_dist[i][1])
+    topic_idx = 0
+    for i in range(50):
+        if i == topic_dist[topic_idx][0]:
+            dist.append(topic_dist[topic_idx][1])
+            if topic_idx < len(topic_dist) - 1:
+                topic_idx = topic_idx + 1
+        else:
+            dist.append(0)
     return dist
 
 def main():
@@ -143,19 +149,19 @@ def main():
     #              "It was an overall great experience!"
 
 
-    reviews_collection = MongoClient(Settings.MONGO_CONNECTION_STRING)[Settings.REVIEWS_DATABASE][
+    reviews_collection = MongoClient(Settings.MONGO_CONNECTION_STRING)[Settings.TEST_DATABASE][
         Settings.REVIEWS_COLLECTION]
 
     reviews_cursor = reviews_collection.find()
     reviewsCount = reviews_cursor.count()
     reviews_cursor.batch_size(1000)
 
-    test_rst_collection = MongoClient(Settings.MONGO_CONNECTION_STRING)[Settings.REVIEWS_DATABASE][
-        "test_result"]
+    test_rst_collection = MongoClient(Settings.MONGO_CONNECTION_STRING)[Settings.TEST_DATABASE][
+        Settings.TEST_RESULT_COLLECTION]
 
 
-    # done = 0
-    # start = time.time()
+    done = 0
+    start = time.time()
     # values = np.array([[0.3, 0.3, 0.4], [0.3, 0.4, 0.3]])
     # print jensen_shannon_divergence(values, weights =None, unit='bit')
 
@@ -174,17 +180,17 @@ def main():
                 test_rst_collection.insert({
                     "reviewId": review["reviewId"],
                     "sentencesId": sentencesCount,
-                    "tip": True if diff < 0.3 else False
+                    "tip": True if diff[0] < 0.5 else False
                 })
 
             sentencesCount = sentencesCount + 1
 
 
-        # done += 1
-        # if done % 100 == 0:
-        #     end = time.time()
-        #     os.system('clear')
-        #     print 'Done ' + str(done) + ' out of ' + str(reviewsCount) + ' in ' + str((end - start))
+        done += 1
+        if done % 100 == 0:
+            end = time.time()
+            os.system('clear')
+            print 'Done ' + str(done) + ' out of ' + str(reviewsCount) + ' in ' + str((end - start))
 
 
 if __name__ == '__main__':
