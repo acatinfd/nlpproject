@@ -43,7 +43,7 @@ def judger_selection():
     while lastPoint < total:
         judger_tips = pickle.load ( open ( "judger_tips.p", "rb") )
         judge(lastPoint, stopPoint, sortedSentenceList, judger_tips)
-        currentProcess(lastPoint, total)
+        currentProcess(stopPoint, total)
         
         toContinue = raw_input('Continue? enter \'y\' to continue, enter \'n\' elsewise \n')
         while not (toContinue in ['y', 'Y', 'N', 'n']):
