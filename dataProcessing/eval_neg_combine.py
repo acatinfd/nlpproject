@@ -43,7 +43,7 @@ def eval_lda(threshold, tipNum):
     Neg_lda = 0
     for res_id in result_lda:
         #if result_lda[res_id] <= threshold and res_id in result_sim:
-        if result_lda[res_id] <= threshold and res_id not in result_sim:
+        if result_lda[res_id] >= threshold and res_id not in result_sim:
             #Pos_lda += 1
             Neg_lda += 1
             #if res_id in result_j1:
@@ -71,7 +71,7 @@ def eval_lda(threshold, tipNum):
     F1 = 0
     if not (recall == 0 and precision == 0):
         F1 = precision * recall * 2/(precision + recall)
-    
+    print "F1 = ", F1
     return (F1, precision, recall) 
 
 highPre = 0
@@ -79,7 +79,7 @@ highRec = 0
 pre = 0
 rec = 0
 step = 10
-tipNum = 10
+tipNum = 20
 F = 0.0
 threhold = -1
 tip = 0
@@ -88,14 +88,14 @@ for i in range(step):
     for j in range(tipNum):
         result = eval_lda(i/(step*1.0), j*100)
     
-    print "================="
-    F1 = result[0]
-    if F < F1:
-        highPre = result[1]
-        highRec = result[2]
-        F = F1
-        threshold = i/(step*1.0)
-        tip = j*100
+        print "================="
+        F1 = result[0]
+        if F < F1:
+            highPre = result[1]
+            highRec = result[2]
+            F = F1
+            threshold = i/(step*1.0)
+            tip = j*100
             
 print 'highest F:', 'F = ', F, ' precision = ', highPre, 'recall = ' , highRec, ' threshold = ', threshold, ' tipNum = ', tip
     

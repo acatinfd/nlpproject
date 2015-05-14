@@ -72,14 +72,14 @@ for i in range(step):
     for j in range(tipNum):
         result = eval_lda(i/(step*1.0), j*100)
     
-    print "================="
-    F1 = result[0]
-    if F < F1:
-        highPre = result[1]
-        highRec = result[2]
-        F = F1
-        threshold = i/(step*1.0)
-        tip = j*100
+        print "================="
+        F1 = result[0]
+        if F < F1:
+            highPre = result[1]
+            highRec = result[2]
+            F = F1
+            threshold = i/(step*1.0)
+            tip = j*100
             
 print 'highest F:', 'F = ', F, ' precision = ', highPre, 'recall = ' , highRec, ' threshold = ', threshold, ' tipNum = ', tip
     
