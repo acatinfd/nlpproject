@@ -54,9 +54,12 @@ for k in range(0, test_size):
 
 reviewSent_score_sorted = sorted(reviewSent_score, key=itemgetter(3),reverse=True)
 score_sorted_tuple = tuple(reviewSent_score_sorted)
-outfile = open('simResultSorted', 'w')
-outfile.write(str(reviewSent_score_sorted))
-outfile.close()
+pickle.dump(score_sorted_tuple, open("simResultSorted.p", "wb"))
+#outfile = open('simResultSorted', 'w')
+#outfile.write(str(reviewSent_score_sorted))
+#outfile.close()
+
+
 #print test_reviewSent_score
 #pickle.dump (test_reviewSent_score, open ( "test_reviewSent_score.p", "wb") )
 #need: reviewid, sentence id? according to judgerTestSet, and score
