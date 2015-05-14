@@ -1,11 +1,12 @@
 import pickle
 import logging
+from operator import itemgetter
 from nltk.corpus import stopwords
 from gensim import corpora, models, similarities
 from cleanSent import cleanSent
 
-test_reviewSent_score = []
-reviewSent_score = {}
+#test_reviewSent_score = []
+reviewSent_score = []
 #pickle.dump (test_reviewSent_score, open ( "test_reviewSent_score.p", "wb") )
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
@@ -46,10 +47,13 @@ for k in range(0, test_size):
     sims = index[tfidf[new_vec]] # sim array to each node
     #print(sum(sims) / len(sims)) # array
     score = sum(sims)/len(sims)
-    #test_reviewSent_score.append(score)
-    reviewSent_score.setdefault(sortedSentenceList[k], []).append(score)
+    test_reviewSent_list = list(sortedSentenceList[k])
+    test_reviewSent_list.append(score)
+    reviewSent_score.append(test_reviewSent_list)
+    #reviewSent_score.setdefault(sortedSentenceList[k], []).append(score)
 
-reviewSent_score_sorted = sorted(reviewSent_score.iteritems(), key = lambda d:d[1], reverse = True)
+reviewSent_score_sorted = sorted(reviewSent_score, key=itemgetter(3),reverse=True)
+score_sorted_tuple = tuple(reviewSent_score_sorted)
 outfile = open('simResultSorted', 'w')
 outfile.write(str(reviewSent_score_sorted))
 outfile.close()
