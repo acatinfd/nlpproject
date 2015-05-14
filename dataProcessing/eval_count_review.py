@@ -3,15 +3,15 @@ import pickle
 def eval_lda(threshold):
     len_id = 22
     result_lda = {}
-    with open("test_rst_2.json") as f:
+    with open("new_test_rst.json") as f:
         for raw in f:
             raw = raw.replace('true', 'True').replace('false', 'False')
             b = eval(raw)
             
             #if high >= b['tip'] and b['tip'] >= low:
             #if 0.7 >= b['tip'] and b['tip'] >= 0.1:
-            if b['tip'] >= threshold:
-                result_lda[str(b['reviewId']) + str(b['sentencesId'])] = b['tip']
+            if b['topic'] >= threshold:
+                result_lda[str(b['reviewId']) + str(b['sentencesId'])] = b['topic']
     
     result_j1 = pickle.load( open( "result_combine.p", "rb") )
     sortedSentenceList = pickle.load ( open ( "smallTestSet.p", "rb") )
