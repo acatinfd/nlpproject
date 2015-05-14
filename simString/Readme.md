@@ -1,4 +1,6 @@
 #To run, using
 python simResult.py
 
-# simResult output file contains a list of (average) similarity score for the first 2001 sentences from judgerTestSet.p, comparing to each sentence tipData.p
+# simResult output file contains a list of (average) similarity score for the first 2001 sentences from judgerTestSet.p, comparing to each sentence in tipData.p
+
+# simResultSorted is a dictionary structure with key = tuple and value = score.
