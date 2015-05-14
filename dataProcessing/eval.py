@@ -22,13 +22,13 @@ def eval_lda(threshold, tipNum):
                 result_sim[str(item[0]) + str(item[1])] = item[3]
                 
     result_lda = {}
-    with open("test_rst1.json") as f:
+    with open("new_test_rst.json") as f:
         for raw in f:
             raw = raw.replace('true', 'True').replace('false', 'False')
             b = eval(raw)
             b_id = str(b['reviewId']) + str(b['sentencesId'])
             
-            if b_id in smallTestSet and b['topic'] > threshold and b_id in result_sim:
+            if b_id in smallTestSet and (b['topic'] <= threshold or b_id not in result_sim):
                 result_lda[b_id] = b['topic']
     
     Pos_lda = len(result_lda)

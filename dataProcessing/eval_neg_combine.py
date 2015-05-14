@@ -28,7 +28,7 @@ def eval_lda(threshold, tipNum):
     
     #get result_lda full set            
     result_lda = {}
-    with open("test_rst1.json") as f:
+    with open("new_test_rst.json") as f:
         for raw in f:
             raw = raw.replace('true', 'True').replace('false', 'False')
             b = eval(raw)
@@ -43,7 +43,7 @@ def eval_lda(threshold, tipNum):
     Neg_lda = 0
     for res_id in result_lda:
         #if result_lda[res_id] <= threshold and res_id in result_sim:
-        if result_lda[res_id] >= threshold and res_id not in result_sim:
+        if result_lda[res_id] >= threshold or res_id not in result_sim:
             #Pos_lda += 1
             Neg_lda += 1
             #if res_id in result_j1:
@@ -78,15 +78,15 @@ highPre = 0
 highRec = 0
 pre = 0
 rec = 0
-step = 10
-tipNum = 20
+step = 20
+tipNum = 40
 F = 0.0
 threhold = -1
 tip = 0
 
 for i in range(step):
     for j in range(tipNum):
-        result = eval_lda(i/(step*1.0), j*100)
+        result = eval_lda(i/(step*1.0), j*50)
     
         print "================="
         F1 = result[0]
