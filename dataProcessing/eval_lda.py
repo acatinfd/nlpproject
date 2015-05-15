@@ -23,7 +23,7 @@ def eval_lda(threshold):
     
     #version 0.4
     """
-    result_j1 = pickle.load( open( "result_combine.p", "rb") )
+    result_j1 = pickle.load( open( "result_combine2.p", "rb") )
     sortedSentenceList = pickle.load ( open ( "smallTestSet.p", "rb") )
     #evaluate the result by judger vs result by lda
     #truePos = 0
@@ -52,15 +52,15 @@ def eval_lda(threshold):
     precision = 0
     recall = 0
     
-    print 'threshold: ', threshold    
+    #print 'threshold: ', threshold    
     if Neg_lda > 0:
         precision = float(trueNeg*1.0/Neg_lda)
-        print "precision = ", str(precision) 
+        #print "precision = ", str(precision) 
     else:
-        print 'Nothing at all'
+        #print 'Nothing at all'
     
     recall = float(trueNeg*1.0/(total - Pos))
-    print "recall = ", str(recall)
+    #print "recall = ", str(recall)
     
     F1 = 0
     if not (recall == 0 and precision == 0):
@@ -78,13 +78,14 @@ F = 0.0
 for i in range(step):
     result = eval_lda(i/(step*1.0))
     #result = eval_lda()
-    print "================="
+    #print "================="
     F1 = result[0]
     if F < F1:
         highPre = result[1]
         highRec = result[2]
         F = F1
         threshold = i/(step*1.0)
+    print ",".join([str(w) for w in result])
         
 print 'highest F:', 'F = ', F, ' precision = ', highPre, 'recall = ' , highRec, ' threshold = ', threshold
     

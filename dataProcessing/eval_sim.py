@@ -22,7 +22,7 @@ def eval_sim(tipNum):
     
     #version 0.4
     """
-    result_j1 = pickle.load( open( "result_combine.p", "rb") )
+    result_j1 = pickle.load( open( "result_combine2.p", "rb") )
     #sortedSentenceList = pickle.load ( open ( "smallTestSet.p", "rb") )
     #evaluate the result by judger vs result by lda
     truePos = 0
