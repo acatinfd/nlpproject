@@ -85,7 +85,7 @@ F = 0.0
 threhold = -1
 tip = 0
 
-"""
+
 for i in range(step):
     for j in range(tipNum):
         if j >= tipNum*0.8:
@@ -121,5 +121,5 @@ while i < 0.5:
             tip = j*100
             
 print 'highest F:', 'F = ', F, ' precision = ', highPre, 'recall = ' , highRec, ' threshold = ', threshold, ' tipNum = ', tip
-    
+"""   
 	

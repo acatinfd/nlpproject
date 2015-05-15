@@ -25,6 +25,9 @@ def eval_lda(threshold):
             result_reviewPack[res_id[:len_id]] = 1
             
     Pos = len(result_reviewPack)
+    
+    print 'all business = ', Pos
+    
     Pos_lda = 0
     
     for res_id in result_lda:
