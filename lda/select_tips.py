@@ -12,14 +12,12 @@ test_final_rst_collection = MongoClient(Settings.MONGO_CONNECTION_STRING)[Settin
     "final"]
 
 def max_elmt(list):
-    nonsense = [0]
+    nonsense = [1, 5, 6, 8, 10, 14, 15, 16, 18, 20, 24, 26, 35, 37, 39]
     prob = 0
     nonsense_idx = 0
     for i in range(50):
-        if nonsense[nonsense_idx] == i:
+        if i not in nonsense:
             prob += list[i]
-            if nonsense_idx + 1 < len(nonsense):
-                nonsense_idx = nonsense_idx + 1
     return prob
 
 
