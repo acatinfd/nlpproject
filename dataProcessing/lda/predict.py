@@ -174,15 +174,14 @@ def main():
         for sentence in sentences:
             predict = Predict()
             sent_topic = extract_distribution(predict.run(sentence))
-            if(len(review_topic) == len(sent_topic)):
-                values = np.array([review_topic, sent_topic])
-                diff = jensen_shannon_divergence(values, weights =None, unit='bit')
-                test_rst_collection.insert({
-                    "reviewId": review["reviewId"],
-                    "sentencesId": sentencesCount,
-                    "tip": True if diff[0] < 0.5 else False
-                })
-
+            #if max_elmt(sent_topic) > 0.4:
+                # values = np.array([review_topic, sent_topic])
+                # diff = jensen_shannon_divergence(values, weights =None, unit='bit')
+            test_rst_collection.insert({
+                "reviewId": review["reviewId"],
+                "sentencesId": sentencesCount,
+                "topic": sent_topic
+            })
             sentencesCount = sentencesCount + 1
 
 
